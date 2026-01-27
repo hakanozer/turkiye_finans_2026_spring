@@ -1,0 +1,32 @@
+spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+
+
+Using generated security password: 55b33256-0b6b-4584-b63f-f0620212b505
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+
+
+Using generated security password: 3721fbed-772a-4fe7-8cf2-ee609897c383
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+
+
+Using generated security password: 615e10f2-a679-4de5-861a-7c110b1ee9e4
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+{"event":"HTTP_REQUEST","timestamp":1769512561745,"method":"GET","path":"/note/list","query":"null","ip":"0:0:0:0:0:0:0:1","forwardedIp":"null","language":"null","userAgent":"PostmanRuntime/7.51.0","headers":{"User-Agent":"PostmanRuntime/7.51.0","Accept":"*/*","Postman-Token":"abfa8817-7f5b-4cdb-afda-a836d3aad656","Host":"localhost:8090","Accept-Encoding":"gzip, deflate, br","Connection":"keep-alive","Cookie":"JSESSIONID=01819D1493E17719E68B1FB9934C838C"}}
+{"event":"HTTP_REQUEST","timestamp":1769512568204,"method":"POST","path":"/customer/login","query":"null","ip":"0:0:0:0:0:0:0:1","forwardedIp":"null","language":"null","userAgent":"PostmanRuntime/7.51.0","headers":{"Content-Type":"application/json","User-Agent":"PostmanRuntime/7.51.0","Accept":"*/*","Postman-Token":"5d139985-5854-4af5-a0b4-12b6e6113eb2","Host":"localhost:8090","Accept-Encoding":"gzip, deflate, br","Connection":"keep-alive","Content-Length":"57","Cookie":"JSESSIONID=8093F6241E0D7C8844E0D39E97D12E87"}}
+{"event":"HTTP_REQUEST","timestamp":1769512571989,"method":"GET","path":"/note/list","query":"null","ip":"0:0:0:0:0:0:0:1","forwardedIp":"null","language":"null","userAgent":"PostmanRuntime/7.51.0","headers":{"User-Agent":"PostmanRuntime/7.51.0","Accept":"*/*","Postman-Token":"4bc0491a-9ffd-48c5-9210-a225fd542194","Host":"localhost:8090","Accept-Encoding":"gzip, deflate, br","Connection":"keep-alive","Cookie":"JSESSIONID=8093F6241E0D7C8844E0D39E97D12E87"}}
+spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+
+
+Using generated security password: 079d6377-8fac-4f6f-b6a0-650f58fdac2e
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+{"event":"HTTP_REQUEST","timestamp":1769512740106,"method":"GET","path":"/note/list","query":"null","ip":"0:0:0:0:0:0:0:1","forwardedIp":"null","language":"null","userAgent":"PostmanRuntime/7.51.0","headers":{"User-Agent":"PostmanRuntime/7.51.0","Accept":"*/*","Postman-Token":"76f50eb0-9ad7-40e6-a781-47c30da8de03","Host":"localhost:8090","Accept-Encoding":"gzip, deflate, br","Connection":"keep-alive","Cookie":"JSESSIONID=8093F6241E0D7C8844E0D39E97D12E87"}}

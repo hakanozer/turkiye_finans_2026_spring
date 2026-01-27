@@ -34,7 +34,7 @@ public class CustomerService {
             boolean passwordStatus = passwordEncoder.matches(customerLoginDto.getPassword(), customer.getPassword());
             if (passwordStatus) {
                 // login başarılı
-                request.getSession().setAttribute("customer", customer);
+                request.getSession().setAttribute("customerObj", customer);
                 return customer;
             } else {
                 return null;
@@ -42,9 +42,6 @@ public class CustomerService {
         }
         return null;
     }
-
-
-
 
 
 }

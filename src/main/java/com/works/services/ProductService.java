@@ -5,6 +5,10 @@ import com.works.entities.dtos.ProductDto;
 import com.works.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,5 +36,19 @@ public class ProductService {
         } catch (Exception e) {
             return false;
         }
+    }
+
+
+    // search products
+    public Page<Product> search(String q, int page) {
+        int price = 0;
+        try {
+            price = Integer.valueOf(q);
+        }catch (Exception e){}
+        // add sort
+        Sort sort = Sort.by(Sort.Direction.ASC, "price");
+        Pageable pageable = PageRequest.of(page, 10, sort);
+        Page<Product> products = productRepository.findByTitleContainsOrDetailContainsOrPriceEqualsAllIgnoreCase(q, q, price, pageable);
+        return products;
     }
 }
