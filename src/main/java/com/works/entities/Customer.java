@@ -3,6 +3,8 @@ package com.works.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Data
 public class Customer {
@@ -18,6 +20,10 @@ public class Customer {
     private String email;
 
     private String password;
+
+    @ManyToMany
+    private List<Role> roles;
+
 
 }
 

@@ -17,10 +17,10 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalException {
 
-    @ExceptionHandler(Exception.class)
-    public void handleException(Exception e) {
-        System.out.println(e.getStackTrace()[0].toString());
-    }
+    //@ExceptionHandler(Exception.class)
+    //public void handleException(Exception e) {
+      //  System.out.println(e.getStackTrace()[0].toString());
+    //}
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Object methodArgumentNotValid( MethodArgumentNotValidException ex ) {
