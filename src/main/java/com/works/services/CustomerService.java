@@ -5,7 +5,9 @@ import com.works.entities.Customer;
 import com.works.entities.dtos.CustomerLoginDto;
 import com.works.entities.dtos.CustomerRegisterDto;
 import com.works.repositories.CustomerRepository;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.ApplicationContext;
@@ -23,13 +25,15 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class CustomerService {
 
+    final private HttpServletRequest request;
+    final private HttpServletResponse response;
+
     final private ApplicationContext applicationContext;
     final private Map<String,IAction> actions;
 
     final private CustomerRepository customerRepository;
     final private ModelMapper modelMapperDefault;
     final private PasswordEncoder passwordEncoder;
-    final private HttpServletRequest request;
     final private JwtUtil jwtUtil;
 
     public Customer registerCustomer(CustomerRegisterDto customerRegisterDto) {
@@ -49,6 +53,17 @@ public class CustomerService {
                 String jwt = jwtUtil.generateToken(customer);
                 Map<String, String> map = new HashMap<>();
                 map.put("token", jwt);
+
+                Cookie cookie = new Cookie("access_token", jwt);
+                cookie.setHttpOnly(true);
+                cookie.setSecure(false); // HTTPS zorunlu
+                cookie.setPath("/");
+                cookie.setMaxAge(60 * 60); // 1 saat
+                cookie.setAttribute("SameSite", "Strict");
+
+                response.addCookie(cookie);
+
+
                 return map;
             } else {
                 return null;
