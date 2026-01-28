@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
 
-@Configuration
+//@Configuration
 public class AppFilter implements Filter {
 
     private static final Logger logger = LoggerFactory.getLogger(AppFilter.class);

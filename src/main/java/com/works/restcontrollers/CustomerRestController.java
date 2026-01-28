@@ -28,9 +28,9 @@ public class CustomerRestController {
 
     @PostMapping("login")
     public Object login(@RequestBody CustomerLoginDto customerLoginDto) {
-        Customer customer = customerService.loginCustomer(customerLoginDto);
-        if (customer != null) {
-            return customer;
+        Object obj = customerService.loginCustomerJWT(customerLoginDto);
+        if (obj != null) {
+            return obj;
         }
         Map<String, Object> hm = new HashMap<>();
         hm.put("status", false);

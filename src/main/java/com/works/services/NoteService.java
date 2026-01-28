@@ -14,10 +14,10 @@ import java.util.List;
 public class NoteService {
 
     private final NoteRepository noteRepository;
-    private final ModelMapper modelMapper;
+    private final ModelMapper modelMapperDefault;
 
     public Note save(NoteDto noteDto) {
-        Note note = modelMapper.map(noteDto, Note.class);
+        Note note = modelMapperDefault.map(noteDto, Note.class);
         return noteRepository.save(note);
     }
 

@@ -18,10 +18,10 @@ import java.util.List;
 public class ProductService {
 
     private final ProductRepository productRepository;
-    private final ModelMapper modelMapper;
+    private final ModelMapper modelMapperDefault;
 
     public Product save(ProductDto productDto) {
-        Product product = modelMapper.map(productDto, Product.class);
+        Product product = modelMapperDefault.map(productDto, Product.class);
         return productRepository.save(product);
     }
 
