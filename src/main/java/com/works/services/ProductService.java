@@ -5,6 +5,7 @@ import com.works.entities.dtos.ProductDto;
 import com.works.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -13,7 +14,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -24,6 +27,7 @@ public class ProductService {
 
     private final ProductRepository productRepository;
     private final ModelMapper modelMapperDefault;
+    private final CacheManager cacheManager;
 
     @CacheEvict(value = "products", allEntries=true)
     public Product save(ProductDto productDto) {
@@ -39,6 +43,7 @@ public class ProductService {
     public boolean delete(Long id) {
         try {
             productRepository.deleteById(id);
+            cacheManager.getCache("products").clear();
             return true;
         } catch (Exception e) {
             return false;
