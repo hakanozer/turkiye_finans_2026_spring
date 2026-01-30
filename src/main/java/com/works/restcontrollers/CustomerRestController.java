@@ -3,15 +3,14 @@ package com.works.restcontrollers;
 import com.works.entities.Customer;
 import com.works.entities.dtos.CustomerLoginDto;
 import com.works.entities.dtos.CustomerRegisterDto;
+import com.works.entities.projections.ICustomerRole;
 import com.works.services.CustomerService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -36,6 +35,16 @@ public class CustomerRestController {
         hm.put("status", false);
         hm.put("message", "Email or Password incorrect");
         return hm;
+    }
+
+    @GetMapping("customerRole")
+    public List<ICustomerRole> customerRoles(){
+        return customerService.customerRoles();
+    }
+
+    @GetMapping("customerRoleEmail")
+    public List<ICustomerRole> customerRoles(@RequestParam String email){
+        return customerService.customerRolesemail(email);
     }
 
 }

@@ -4,6 +4,7 @@ import com.works.configs.IAction;
 import com.works.entities.Customer;
 import com.works.entities.dtos.CustomerLoginDto;
 import com.works.entities.dtos.CustomerRegisterDto;
+import com.works.entities.projections.ICustomerRole;
 import com.works.repositories.CustomerRepository;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -96,6 +97,15 @@ public class CustomerService {
             }
         }
         return null;
+    }
+
+    public List<ICustomerRole> customerRoles(){
+        return customerRepository.customerRoles();
+    }
+
+    public List<ICustomerRole> customerRolesemail(String email){
+        List<ICustomerRole> list = customerRepository.customerRolesEmail(email);
+        return list;
     }
 
 

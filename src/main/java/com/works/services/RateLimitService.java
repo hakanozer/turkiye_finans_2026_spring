@@ -20,7 +20,7 @@ public class RateLimitService {
                 Bucket.builder()
                 .addLimit(
                         Bandwidth.classic(
-                                1,
+                                10,
                                 Refill.intervally(1, Duration.ofSeconds(1))
                         )
                 )

@@ -27,7 +27,6 @@ public class ProductService {
 
     private final ProductRepository productRepository;
     private final ModelMapper modelMapperDefault;
-    private final CacheManager cacheManager;
 
     @CacheEvict(value = "products", allEntries=true)
     public Product save(ProductDto productDto) {
@@ -43,7 +42,6 @@ public class ProductService {
     public boolean delete(Long id) {
         try {
             productRepository.deleteById(id);
-            cacheManager.getCache("products").clear();
             return true;
         } catch (Exception e) {
             return false;

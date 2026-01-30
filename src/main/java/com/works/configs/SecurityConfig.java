@@ -30,6 +30,7 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/customer/**").permitAll()
+                        .requestMatchers("/app/**").permitAll()
                         .requestMatchers("/product/**").hasRole("product")
                         .requestMatchers("/note/**").hasRole("note")
                         .anyRequest().authenticated()

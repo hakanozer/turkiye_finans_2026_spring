@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="tr" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:include="inc/site"></th:block>
+    <title>Products</title>
+</head>
+<body>
+
+<div class="container my-4">
+    <th:block th:include="inc/navbar"></th:block>
+    <!-- ================= FORM ================= -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h5 class="mb-0">Yeni Ürün Ekle</h5>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/app/productSave}" method="post">
+
+                        <div class="mb-3">
+                            <label class="form-label">Title</label>
+                            <input type="text" name="title" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Detail</label>
+                            <textarea name="detail" class="form-control" rows="3" required></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Price</label>
+                            <input type="number" name="price" class="form-control" min="0" required>
+                        </div>
+
+                        <div class="d-grid d-md-flex justify-content-md-end gap-2">
+                            <button type="reset" class="btn btn-outline-secondary">Temizle</button>
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= DESKTOP TABLE ================= -->
+    <div class="d-none d-md-block">
+        <h4>Ürün Listesi</h4>
+
+        <table class="table table-hover" th:if="${products != null && products.size() > 0}">
+            <thead class="table-light">
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Detail</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.title}"></td>
+                <td th:text="${product.detail}"></td>
+                <td th:text="${product.price}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="alert alert-warning" th:if="${products != null && products.size() == 0}">
+            Henüz ürün eklenmedi.
+        </div>
+    </div>
+
+    <!-- ================= MOBILE CARD LIST ================= -->
+    <div class="d-block d-md-none">
+        <h4>Ürün Listesi</h4>
+
+        <div th:if="${products != null && products.size() == 0}" class="alert alert-warning">
+            Henüz ürün eklenmedi.
+        </div>
+
+        <div class="card mb-3 shadow-sm"
+             th:if="${products != null && products.size() > 0}"
+             th:each="product : ${products}">
+            <div class="card-body">
+                <h5 class="card-title" th:text="${product.title}"></h5>
+                <p class="card-text" th:text="${product.detail}"></p>
+                <span class="badge bg-primary">
+                    ₺ <span th:text="${product.price}"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
